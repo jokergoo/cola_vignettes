@@ -1,9 +1,15 @@
----
-title: "Work with Big Datasets"
-author: "Zuguang Gu ( z.gu@dkfz.de )"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
----
+Work with Big Datasets
+=============================================================
+
+**Author**: Zuguang Gu ( z.gu@dkfz.de )
+
+**Date**: `r Sys.Date()`
+
+**Package version**: `r installed.packages()["cola", "Version"]`
+
+-------------------------------------------------------------
+
+
 
 ```{r, echo = FALSE, message = FALSE}
 library(markdown)

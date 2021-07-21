@@ -1,9 +1,14 @@
----
-title: "Predict Classes for New Samples"
-author: "Zuguang Gu ( z.gu@dkfz.de )"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
----
+Predict Classes for New Samples
+=============================================================
+
+**Author**: Zuguang Gu ( z.gu@dkfz.de )
+
+**Date**: `r Sys.Date()`
+
+**Package version**: `r installed.packages()["cola", "Version"]`
+
+-------------------------------------------------------------
+
 
 ```{r, echo = FALSE, message = FALSE}
 library(markdown)
@@ -50,8 +55,7 @@ are as follows:
 
 1. For the provided `ConsensusPartition` object and a selected k, the
    signatures that discriminate classes are extracted by `get_signatures()`.
-   If number of signatures is more than 2000, only 2000 signatures are randomly
-   sampled.
+   If number of signatures is more than 500, only 500 most significant signatures are used.
 2. The signature centroid matrix is a k-column matrix where each column is the
    centroid of samples in the corresponding class, i.e., the mean across
    samples. If rows were scaled in *cola* analysis, the signature centroid

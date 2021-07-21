@@ -1,8 +1,3 @@
-<!--
-%\VignetteEngine{knitr}
-%\VignetteIndexEntry{6. Hierarchical Consensus Partitioning}
--->
-
 Hierarchical Consensus Partitioning
 =============================================================
 
@@ -248,7 +243,6 @@ There are following columns from `node_info()`:
 - `n_columns`: Number of columns of the submatrix.
 - `n_signatures`: Number of signatures.
 - `p_signatures`: Fraction of signatures to the total number of rows of the matrix.
-- `node_height`: The height of the node in the dendrogram.
 - `is_leaf`: Whether the node is a leaf node.
 
 These values are useful to merge the children nodes.
@@ -261,27 +255,24 @@ can be adjusted:
 - `depth`
 - `min_n_signatures`
 - `min_p_signatures`
-- `node_height`
 
-`node_height` is the most direct way to adjust the hierarchy which controls which levels on the
-dendrogram to merge. In the following, we demonstrate to manuplate the dendrogram by
-setting different `node_height` values.
-
-We set 0.6 and 0.8 to filter `node_height`:
+`min_n_signatures` measures how much you trust the classification on the bioloigcal point of view.
+In the following, we demonstrate to manuplate the dendrogram by
+setting different `min_n_signatures` values.
 
 ```{r, eval = FALSE}
-collect_classes(golub_cola_rh, merge_node = merge_node_param(node_height = 0.52))
-collect_classes(golub_cola_rh, merge_node = merge_node_param(node_height = 0.6))
-collect_classes(golub_cola_rh, merge_node = merge_node_param(node_height = 0.8))
+collect_classes(golub_cola_rh, merge_node = merge_node_param(min_n_signatures = 174))
+collect_classes(golub_cola_rh, merge_node = merge_node_param(min_n_signatures = 263))
+collect_classes(golub_cola_rh, merge_node = merge_node_param(min_n_signatures = 2041))
 ```
 
 ```{r, echo = FALSE, fig.width = 7}
-p1 = grid.grabExpr(collect_classes(golub_cola_rh, merge_node = merge_node_param(node_height = 0.6),
-	row_title = "node_height >= 0.52"))
-p2 = grid.grabExpr(collect_classes(golub_cola_rh, merge_node = merge_node_param(node_height = 0.6),
-	row_title = "node_height >= 0.6"))
-p3=  grid.grabExpr(collect_classes(golub_cola_rh, merge_node = merge_node_param(node_height = 0.8),
-	row_title = "node_height >= 0.8"))
+p1 = grid.grabExpr(collect_classes(golub_cola_rh, merge_node = merge_node_param(min_n_signatures = 174),
+	row_title = "min_n_signatures >= 174"))
+p2 = grid.grabExpr(collect_classes(golub_cola_rh, merge_node = merge_node_param(min_n_signatures = 263),
+	row_title = "min_n_signatures >= 263"))
+p3=  grid.grabExpr(collect_classes(golub_cola_rh, merge_node = merge_node_param(min_n_signatures = 2041),
+	row_title = "min_n_signatures >= 2041"))
 grid.newpage()
 pushViewport(viewport(x = 0, width = 1/3, just = "left"))
 grid.draw(p1)
